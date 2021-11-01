@@ -2,7 +2,7 @@ name: Database scripts execution
 on:
   push:
     branches:
-    - main
+    - main 
 jobs:
   getDbEnv:
     runs-on: ubuntu-latest
