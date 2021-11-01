@@ -1,0 +1,28 @@
+name: 'Database workflow'
+
+on:
+  push:
+    branches:
+    - main
+
+env:
+  DB_NAME: test_db
+  DB_USER: root
+  DB_PASSWORD: root
+
+jobs:
+  runDB: 
+    name: 'Run MYSQL'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run: 
+        shell: bash
+ 
+    steps:
+      - name: Setup MYSQL
+        run: |
+             sudo systemctl start mysql.service
+             sudo service mysql status
+             # sudo /etc/init.d/mysql start
+              # mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u ${{ env.DB_USER }} -p ${{ env.DB_PASSWORD }}
