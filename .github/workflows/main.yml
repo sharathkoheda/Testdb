@@ -10,7 +10,7 @@ jobs:
       - name: Get Database type
         id: environment
         run: |
-          ${dbType}="mysql"
+          ${dbType}=mysql
           if [ "${{ github.event.client_payload.dbType }}" != "" ]; then
               dbType=${{ github.event.client_payload.dbType }}
           fi
@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: Setup MYSQL
-        if: ${dbType} == "mysql"
+        if: ${dbType} == mysql
         uses: Azure/mysql@v1
         with:
             server-name: ${{ env.DB_SERVER_NAME }}
